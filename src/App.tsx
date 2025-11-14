@@ -4,10 +4,10 @@ import HeroSection from './components/HeroSection';
 import Footer from './components/Footer';
 
 function App() {
-  const [_trackingNumbers, setTrackingNumbers] = useState<string[]>([]);
+  const [_trackingNumbers, _setTrackingNumbers] = useState<string[]>([]);
 
   const handleTrack = (numbers: string[]) => {
-    setTrackingNumbers(numbers);
+    _setTrackingNumbers(numbers);
     // Aquí se implementará la lógica de rastreo con n8n
     console.log('Rastreando:', numbers);
   };
