@@ -1,0 +1,95 @@
+/**
+ * Servicio de Rastreo de Paquetes
+ * Conecta con n8n para consultar Google Sheets
+ */
+
+// Tipo de datos del paquete
+export interface PackageStatus {
+  status: string;
+  date: string;
+  location?: string;
+  note?: string;
+}
+
+export interface TrackingData {
+  trackingNumber: string;
+  currentStatus: string;
+  customerName?: string;
+  lastUpdate: string;
+  estimatedDelivery?: string;
+  statusHistory: PackageStatus[];
+  externalTrackingLink?: string;
+}
+
+export interface TrackingResponse {
+  success: boolean;
+  data?: TrackingData;
+  error?: string;
+  message?: string;
+}
+
+/**
+ * Buscar información de un paquete por número de rastreo
+ * @param trackingNumber - Número de rastreo (ej: PP-12345)
+ * @returns Promise con la información del paquete
+ */
+export const searchTracking = async (
+  trackingNumber: string
+): Promise<TrackingResponse> => {
+  try {
+    // URL del webhook de n8n (se configurará en .env)
+    const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
+
+    if (!webhookUrl) {
+      throw new Error('Webhook URL no configurada');
+    }
+
+    // Hacer petición POST al webhook de n8n
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        trackingNumber: trackingNumber.trim().toUpperCase(),
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Validar respuesta
+    if (!data.success) {
+      return {
+        success: false,
+        error: data.error || 'No se encontró el número de rastreo',
+        message: 'Verifica que el número esté correcto',
+      };
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error al buscar rastreo:', error);
+    return {
+      success: false,
+      error: 'Error de conexión',
+      message: 'No se pudo conectar con el servidor. Intenta nuevamente.',
+    };
+  }
+};
+
+/**
+ * Buscar múltiples números de rastreo
+ * @param trackingNumbers - Array de números de rastreo
+ * @returns Promise con array de resultados
+ */
+export const searchMultipleTracking = async (
+  trackingNumbers: string[]
+): Promise<TrackingResponse[]> => {
+  const promises = trackingNumbers.map((number) => searchTracking(number));
+  return Promise.all(promises);
+};
+

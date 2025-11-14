@@ -3,18 +3,17 @@ import { Search, Package } from 'lucide-react';
 
 interface HeroSectionProps {
   onTrack: (numbers: string[]) => void;
+  isLoading?: boolean;
+  error?: string | null;
 }
 
-const HeroSection = ({ onTrack }: HeroSectionProps) => {
+const HeroSection = ({ onTrack, isLoading = false, error = null }: HeroSectionProps) => {
   const [inputValue, setInputValue] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!inputValue.trim()) return;
-
-    setIsLoading(true);
+    if (!inputValue.trim() || isLoading) return;
     
     // Separar múltiples números por comas
     const numbers = inputValue
@@ -22,11 +21,7 @@ const HeroSection = ({ onTrack }: HeroSectionProps) => {
       .map(num => num.trim())
       .filter(num => num.length > 0);
     
-    // Simular búsqueda
-    setTimeout(() => {
-      onTrack(numbers);
-      setIsLoading(false);
-    }, 800);
+    onTrack(numbers);
   };
 
   return (
@@ -93,6 +88,16 @@ const HeroSection = ({ onTrack }: HeroSectionProps) => {
                 <p className="mt-2 text-sm text-pallets-gray">
                   Puedes ingresar varios números separados por comas
                 </p>
+                
+                {/* Mensaje de error */}
+                {error && (
+                  <div className="mt-4 p-4 bg-red-50 border-l-4 border-red-500 rounded-lg">
+                    <p className="text-red-700 font-semibold">❌ {error}</p>
+                    <p className="text-red-600 text-sm mt-1">
+                      Verifica el número de rastreo e intenta nuevamente.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Submit Button - Estilo DHL (rojo) */}
