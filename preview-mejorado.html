@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pallets Premium - Preview Mejorado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pallets-yellow': '#F5B800',
+                        'pallets-black': '#1A1A1A',
+                        'pallets-gray': '#666666',
+                        'pallets-light': '#F5F5F5',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+        }
+        .hex-pattern {
+            background-image: url('public/images/background-hex.png');
+            background-size: 400px;
+            background-repeat: repeat;
+            opacity: 0.05;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- HEADER -->
+    <header class="bg-[#F5B800] border-b-4 border-[#1A1A1A]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-4">
+                <!-- Logo de Pallets Premium -->
+                <div class="flex items-center">
+                    <img 
+                        src="public/images/logo-pallets.png" 
+                        alt="Pallets Premium" 
+                        class="h-20 md:h-24 w-auto object-contain"
+                    />
+                </div>
+
+                <!-- Información de Contacto -->
+                <div class="hidden md:flex flex-col items-end space-y-1">
+                    <a href="tel:+1234567890" class="flex items-center text-[#1A1A1A] hover:text-[#1A1A1A]/80 transition-colors">
+                        <span class="font-semibold text-sm">📞 +1 (234) 567-890</span>
+                    </a>
+                    <a href="mailto:contacto@palletspremium.com" class="flex items-center text-[#1A1A1A] hover:text-[#1A1A1A]/80 transition-colors">
+                        <span class="font-semibold text-sm">📧 contacto@palletspremium.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="relative bg-gradient-to-b from-gray-50 to-white">
+        <!-- Fondo hexagonal -->
+        <div class="absolute inset-0 hex-pattern pointer-events-none"></div>
+        
+        <!-- Hero Title -->
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <span class="text-7xl drop-shadow-lg">📦</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4">
+                    Rastreo y seguimiento
+                </h2>
+                <p class="text-lg md:text-xl text-[#666666] max-w-2xl mx-auto">
+                    Rastrea tu paquete de Los Ángeles a México en tiempo real
+                </p>
+            </div>
+        </div>
+
+        <!-- Tracking Form Section - Estilo DHL -->
+        <div class="relative bg-[#F5F5F5] py-16">
+            <!-- Fondo hexagonal sutil -->
+            <div class="absolute inset-0 hex-pattern pointer-events-none" style="opacity: 0.03;"></div>
+            
+            <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 border-t-4 border-[#F5B800]">
+                    <form class="space-y-6">
+                        <!-- Input Field -->
+                        <div>
+                            <label for="tracking-input" class="block text-sm font-semibold text-[#1A1A1A] mb-3">
+                                Ingresar el o los números de rastreo.
+                            </label>
+                            <div class="relative group">
+                                <input
+                                    id="tracking-input"
+                                    type="text"
+                                    placeholder="Ejemplo: PP-12345, PP-67890"
+                                    class="w-full px-4 py-4 pr-12 border-2 border-gray-300 rounded-xl focus:border-[#F5B800] focus:ring-4 focus:ring-[#F5B800]/20 outline-none transition-all text-lg hover:border-[#F5B800]/50 hover:shadow-md"
+                                />
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl">🔍</span>
+                            </div>
+                            <p class="mt-2 text-sm text-[#666666]">
+                                Puedes ingresar varios números separados por comas
+                            </p>
+                        </div>
+
+                        <!-- Submit Button - Estilo DHL (rojo) -->
+                        <button
+                            type="submit"
+                            class="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-12 rounded-xl transition-all duration-200 transform hover:scale-[1.02] hover:shadow-2xl active:scale-[0.98] shadow-lg text-lg"
+                        >
+                            Rastrear
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section Preview -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <h3 class="text-3xl font-bold text-[#1A1A1A] mb-8">
+                Preguntas Frecuentes
+            </h3>
+            
+            <div class="space-y-4">
+                <details class="bg-white rounded-xl shadow-lg p-6 cursor-pointer group hover:shadow-xl transition-shadow">
+                    <summary class="font-semibold text-[#1A1A1A] text-lg list-none flex items-center justify-between">
+                        ¿Qué Es un Número de Rastreo y Dónde Puedo Encontrarlo?
+                        <span class="text-[#F5B800] text-2xl transition-transform group-open:rotate-180">⌄</span>
+                    </summary>
+                    <p class="mt-4 text-[#666666] leading-relaxed">
+                        Tu número de rastreo es un código único que comienza con "PP-" seguido de números. 
+                        Lo encontrarás en tu comprobante de envío o en el correo de confirmación que te enviamos.
+                    </p>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-lg p-6 cursor-pointer group hover:shadow-xl transition-shadow">
+                    <summary class="font-semibold text-[#1A1A1A] text-lg list-none flex items-center justify-between">
+                        ¿Cuándo estará disponible la información de rastreo de mi envío?
+                        <span class="text-[#F5B800] text-2xl transition-transform group-open:rotate-180">⌄</span>
+                    </summary>
+                    <p class="mt-4 text-[#666666] leading-relaxed">
+                        La información de rastreo estará disponible dentro de las 24 horas posteriores 
+                        a la recolección de tu paquete. Los datos se actualizan cada vez que tu envío 
+                        pasa por un punto de control.
+                    </p>
+                </details>
+
+                <details class="bg-white rounded-xl shadow-lg p-6 cursor-pointer group hover:shadow-xl transition-shadow">
+                    <summary class="font-semibold text-[#1A1A1A] text-lg list-none flex items-center justify-between">
+                        ¿Por qué no funciona mi número o ID de rastreo?
+                        <span class="text-[#F5B800] text-2xl transition-transform group-open:rotate-180">⌄</span>
+                    </summary>
+                    <p class="mt-4 text-[#666666] leading-relaxed">
+                        Si tu número de rastreo no funciona, verifica que esté escrito correctamente. 
+                        Si el problema persiste, puede que la información aún no esté disponible (espera 24 horas) 
+                        o contacta a nuestro equipo de soporte para ayudarte.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="relative bg-[#1A1A1A] text-white mt-auto overflow-hidden">
+        <!-- Fondo hexagonal -->
+        <div class="absolute inset-0 hex-pattern pointer-events-none"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Información de Contacto -->
+                <div>
+                    <h3 class="text-xl font-bold text-[#F5B800] mb-4">
+                        Contacto
+                    </h3>
+                    <div class="space-y-3">
+                        <p>📞 +1 (234) 567-890</p>
+                        <p>📧 contacto@palletspremium.com</p>
+                        <p>📍 Los Ángeles, California → México</p>
+                    </div>
+                </div>
+
+                <!-- Horarios de Atención -->
+                <div>
+                    <h3 class="text-xl font-bold text-[#F5B800] mb-4">
+                        Horarios de Atención
+                    </h3>
+                    <div class="space-y-2">
+                        <div>
+                            <p class="font-semibold">Lunes a Viernes</p>
+                            <p class="text-gray-300">9:00 AM - 6:00 PM (PST)</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold">Sábados</p>
+                            <p class="text-gray-300">10:00 AM - 2:00 PM (PST)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Redes Sociales -->
+                <div>
+                    <h3 class="text-xl font-bold text-[#F5B800] mb-4">
+                        Síguenos
+                    </h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-[#F5B800]/10 hover:bg-[#F5B800] p-3 rounded-full transition-all transform hover:scale-110">
+                            📘
+                        </a>
+                        <a href="#" class="bg-[#F5B800]/10 hover:bg-[#F5B800] p-3 rounded-full transition-all transform hover:scale-110">
+                            📷
+                        </a>
+                        <a href="#" class="bg-[#F5B800]/10 hover:bg-[#F5B800] p-3 rounded-full transition-all transform hover:scale-110">
+                            🐦
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2025 <span class="text-[#F5B800] font-semibold">Pallets Premium</span>. 
+                    Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animación suave para el scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

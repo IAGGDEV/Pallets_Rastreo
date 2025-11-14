@@ -9,7 +9,7 @@ const Footer = () => {
       <div 
         className="absolute inset-0 opacity-5 pointer-events-none"
         style={{
-          backgroundImage: 'url(/images/background-hex.png)',
+          backgroundImage: 'url(/images/background-hex.jpg)',
           backgroundSize: '350px',
           backgroundRepeat: 'repeat'
         }}
