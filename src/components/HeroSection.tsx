@@ -30,12 +30,22 @@ const HeroSection = ({ onTrack }: HeroSectionProps) => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white">
+    <div className="relative bg-gradient-to-b from-gray-50 to-white">
+      {/* Fondo hexagonal */}
+      <div 
+        className="absolute inset-0 opacity-5 pointer-events-none"
+        style={{
+          backgroundImage: 'url(/images/background-hex.png)',
+          backgroundSize: '400px',
+          backgroundRepeat: 'repeat'
+        }}
+      />
+      
       {/* Hero Title */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
         <div className="text-center">
           <div className="flex items-center justify-center mb-4">
-            <Package className="w-12 h-12 text-pallets-yellow" />
+            <Package className="w-16 h-16 text-pallets-yellow drop-shadow-lg" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-pallets-black mb-4">
             Rastreo y seguimiento
@@ -47,9 +57,18 @@ const HeroSection = ({ onTrack }: HeroSectionProps) => {
       </div>
 
       {/* Tracking Form Section - Estilo DHL */}
-      <div className="bg-pallets-light py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-lg shadow-xl p-8 md:p-12">
+      <div className="relative bg-pallets-light py-16">
+        {/* Fondo hexagonal sutil */}
+        <div 
+          className="absolute inset-0 opacity-3 pointer-events-none"
+          style={{
+            backgroundImage: 'url(/images/background-hex.png)',
+            backgroundSize: '300px',
+            backgroundRepeat: 'repeat'
+          }}
+        />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 border-t-4 border-pallets-yellow">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Input Field */}
               <div>
@@ -59,17 +78,17 @@ const HeroSection = ({ onTrack }: HeroSectionProps) => {
                 >
                   Ingresar el o los números de rastreo.
                 </label>
-                <div className="relative">
+                <div className="relative group">
                   <input
                     id="tracking-input"
                     type="text"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     placeholder="Ejemplo: PP-12345, PP-67890"
-                    className="w-full px-4 py-4 border-2 border-gray-300 rounded-lg focus:border-pallets-yellow focus:ring-2 focus:ring-pallets-yellow/20 outline-none transition-all text-lg"
+                    className="w-full px-4 py-4 pr-12 border-2 border-gray-300 rounded-xl focus:border-pallets-yellow focus:ring-4 focus:ring-pallets-yellow/20 outline-none transition-all text-lg hover:border-pallets-yellow/50 hover:shadow-md"
                     disabled={isLoading}
                   />
-                  <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-pallets-yellow transition-colors" />
                 </div>
                 <p className="mt-2 text-sm text-pallets-gray">
                   Puedes ingresar varios números separados por comas
@@ -80,7 +99,7 @@ const HeroSection = ({ onTrack }: HeroSectionProps) => {
               <button
                 type="submit"
                 disabled={isLoading || !inputValue.trim()}
-                className="w-full md:w-auto bg-red-600 hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold py-4 px-12 rounded-lg transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg text-lg"
+                className="w-full md:w-auto bg-red-600 hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold py-4 px-12 rounded-xl transition-all duration-200 transform hover:scale-[1.02] hover:shadow-2xl active:scale-[0.98] shadow-lg text-lg relative overflow-hidden group"
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center">

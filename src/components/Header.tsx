@@ -5,22 +5,13 @@ const Header = () => {
     <header className="bg-pallets-yellow border-b-4 border-pallets-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
-          {/* Logo y Nombre */}
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center">
-              {/* Logo simulado - se reemplazará con la imagen real */}
-              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-lg">
-                <div className="text-pallets-black font-bold text-2xl">PP</div>
-              </div>
-              <div className="ml-3">
-                <h1 className="text-2xl md:text-3xl font-bold text-pallets-black">
-                  PALLETS PREMIUM
-                </h1>
-                <p className="text-sm text-pallets-black/80 font-medium">
-                  Tu envío seguro de LA a México
-                </p>
-              </div>
-            </div>
+          {/* Logo de Pallets Premium */}
+          <div className="flex items-center">
+            <img 
+              src="/images/logo-pallets.png" 
+              alt="Pallets Premium" 
+              className="h-20 md:h-24 w-auto object-contain"
+            />
           </div>
 
           {/* Información de Contacto */}
