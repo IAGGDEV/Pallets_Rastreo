@@ -37,22 +37,17 @@ export const searchTracking = async (
   trackingNumber: string
 ): Promise<TrackingResponse> => {
   try {
-    // URL del webhook de n8n (se configurará en .env)
+    // URL del Web App de Google Apps Script
     const webhookUrl = (import.meta as any).env.VITE_N8N_WEBHOOK_URL;
 
     if (!webhookUrl) {
-      throw new Error('Webhook URL no configurada');
+      throw new Error('URL del Backend no configurada');
     }
 
-    // Hacer petición POST al webhook de n8n
-    const response = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        trackingNumber: trackingNumber.trim().toUpperCase(),
-      }),
+    // Petición GET al Web App con fetch
+    const targetUrl = `${webhookUrl}?trackingNumber=${encodeURIComponent(trackingNumber.trim().toUpperCase())}`;
+    const response = await fetch(targetUrl, {
+      method: 'GET',
     });
 
     if (!response.ok) {
