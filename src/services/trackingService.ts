@@ -38,7 +38,7 @@ export const searchTracking = async (
 ): Promise<TrackingResponse> => {
   try {
     // URL del webhook de n8n (se configurará en .env)
-    const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
+    const webhookUrl = (import.meta as any).env.VITE_N8N_WEBHOOK_URL;
 
     if (!webhookUrl) {
       throw new Error('Webhook URL no configurada');

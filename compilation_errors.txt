@@ -1,0 +1,2 @@
+﻿src/components/TrackingResults.tsx(117,25): error TS6133: 'isCompleted' is declared but its value is never read.
+src/services/trackingService.ts(41,36): error TS2339: Property 'env' does not exist on type 'ImportMeta'.

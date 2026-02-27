@@ -46,7 +46,7 @@ const TrackingResults = ({ data }: TrackingResultsProps) => {
   return (
     <div className="relative bg-gradient-to-b from-gray-50 to-white">
       {/* Fondo hexagonal */}
-      <div 
+      <div
         className="absolute inset-0 opacity-5 pointer-events-none"
         style={{
           backgroundImage: 'url(/images/background-hex.jpg)',
@@ -70,7 +70,7 @@ const TrackingResults = ({ data }: TrackingResultsProps) => {
                 <span className="text-pallets-gray">Número de guía: </span>
                 <span className="font-bold text-pallets-black">{data.tracking_number}</span>
               </div>
-              
+
               {data.service_type && (
                 <>
                   <span className="text-gray-300">|</span>
@@ -80,7 +80,7 @@ const TrackingResults = ({ data }: TrackingResultsProps) => {
                   </div>
                 </>
               )}
-              
+
               {data.estimated_delivery && (
                 <>
                   <span className="text-gray-300 hidden md:inline">|</span>
@@ -105,7 +105,7 @@ const TrackingResults = ({ data }: TrackingResultsProps) => {
             <div className="relative">
               {/* Línea de conexión */}
               <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -translate-y-1/2 hidden md:block" />
-              <div 
+              <div
                 className="absolute top-1/2 left-0 h-1 bg-green-500 -translate-y-1/2 transition-all duration-500 hidden md:block"
                 style={{ width: `${((currentStep - 1) / 3) * 100}%` }}
               />
@@ -114,14 +114,13 @@ const TrackingResults = ({ data }: TrackingResultsProps) => {
               <div className="relative grid grid-cols-4 gap-2 md:gap-4">
                 {STEP_NAMES.map((stepName, index) => {
                   const stepNumber = index + 1;
-                  const isCompleted = stepNumber < currentStep;
                   const isCurrent = stepNumber === currentStep;
                   const isActive = stepNumber <= currentStep;
 
                   return (
                     <div key={index} className="flex flex-col items-center">
                       {/* Círculo con icono */}
-                      <div 
+                      <div
                         className={`
                           relative z-10 rounded-full p-4 md:p-6 transition-all duration-300
                           ${isActive ? 'bg-green-500 text-white' : 'bg-gray-300 text-gray-500'}
@@ -137,7 +136,7 @@ const TrackingResults = ({ data }: TrackingResultsProps) => {
                       )}
 
                       {/* Texto del paso */}
-                      <p 
+                      <p
                         className={`
                           mt-3 text-center text-xs md:text-sm font-semibold px-1
                           ${isActive ? 'text-pallets-black' : 'text-gray-400'}
@@ -176,10 +175,10 @@ const TrackingResults = ({ data }: TrackingResultsProps) => {
           {showHistory && (
             <div className="p-6 md:p-8 bg-gray-50 border-t border-gray-200">
               <h3 className="text-xl font-bold text-pallets-black mb-6">Historial de Rastreo</h3>
-              
+
               <div className="space-y-4">
                 {data.history.map((event, index) => (
-                  <div 
+                  <div
                     key={index}
                     className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-pallets-yellow"
                   >
@@ -192,17 +191,17 @@ const TrackingResults = ({ data }: TrackingResultsProps) => {
                       {/* Contenido */}
                       <div className="flex-1">
                         <p className="font-bold text-pallets-black">{event.status}</p>
-                        
+
                         {event.location && (
                           <p className="text-sm text-pallets-gray mt-1">
                             📍 {event.location}
                           </p>
                         )}
-                        
+
                         {event.note && (
                           <p className="text-sm text-pallets-gray mt-1">{event.note}</p>
                         )}
-                        
+
                         <p className="text-xs text-gray-400 mt-2">
                           {formatDateTime(event.date)}
                         </p>
