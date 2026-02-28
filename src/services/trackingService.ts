@@ -1,6 +1,6 @@
 /**
  * Servicio de Rastreo de Paquetes
- * Conecta con n8n para consultar Google Sheets
+ * Conecta directamente con Google Sheets (Apps Script)
  */
 
 // Tipo de datos del paquete
@@ -38,7 +38,7 @@ export const searchTracking = async (
 ): Promise<TrackingResponse> => {
   try {
     // URL del Web App de Google Apps Script
-    const webhookUrl = (import.meta as any).env.VITE_N8N_WEBHOOK_URL;
+    const webhookUrl = (import.meta as any).env.VITE_API_URL;
 
     if (!webhookUrl) {
       throw new Error('URL del Backend no configurada');

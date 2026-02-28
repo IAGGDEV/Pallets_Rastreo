@@ -14,8 +14,10 @@
 //        Ejecutar como: "Yo" (tu email)
 //        Quién tiene acceso: "Cualquier persona" (¡MUY IMPORTANTE PARA QUE FUNCIONE!)
 // 7. Haz clic en el botón "Implementar" y autoriza los permisos si te los pide.
-// 8. Copia la "URL de la aplicación web" generada (suele terminar en /exec) y pégala en Vercel.
-//
+// 8. Copia la "URL de la aplicación web" generada (suele terminar en /exec).
+// 9. Ve a tu proyecto en Vercel > Settings > Environment Variables y agrega:
+//    - Key: VITE_API_URL
+//    - Value: [La URL que copiaste en el paso 8]
 // ==========================================
 // ESTRUCTURA EXACTA SEGÚN TU IMAGEN
 // ==========================================
